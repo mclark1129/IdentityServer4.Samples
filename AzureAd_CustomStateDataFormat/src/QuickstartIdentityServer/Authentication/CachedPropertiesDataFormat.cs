@@ -69,7 +69,7 @@ namespace QuickstartIdentityServer.Authentication
 
         public AuthenticationProperties Unprotect(string protectedText, string purpose)
         {
-            // Decrypt the 
+            // Decrypt the key and retrieve the data from the cache.
             var key = _dataProtector.Unprotect(protectedText);
             var cacheKey = $"{CacheKeyPrefix}{key}";
             var serialized = _cache.Get(cacheKey);
